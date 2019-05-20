@@ -31,7 +31,7 @@ namespace Hello
         public static List<string[]> GetFileMetadata()
         {
             var parsedBookData = new List<string[]>();
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Shusui\desktop\books.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"books.txt");
             foreach (var line in lines)
             {
                 parsedBookData.Add(line.Split(","));
@@ -62,7 +62,7 @@ namespace Hello
                 StringBuilder sb = new StringBuilder($"{ book.Author },{book.Name},{book.Status},{book.Date}");
                 bookPropList.Add(sb.ToString());
             }
-            System.IO.File.WriteAllLines(@"C:\Users\Shusui\desktop\books.txt", bookPropList);
+            System.IO.File.WriteAllLines(@"books.txt", bookPropList);
         }
     }
 }
