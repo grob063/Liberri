@@ -11,20 +11,14 @@ namespace Hello
             var parsedBookData = GetFileMetadata();
             var bookList = BuildBookInstanceList(parsedBookData);
 
-            
-            foreach (var book in bookList)
-            {
-                Console.WriteLine(book.Author);
-                Console.WriteLine(book.Name);
-                Console.WriteLine(book.Status);
-                Console.WriteLine(book.Date);
-            }
+            WelcomeMenu(bookList);
+          
             
 
-            Console.Write("Enter a new author: ");
-            bookList[0].Author = Console.ReadLine();
+            //Console.Write("Enter a new author: ");
+            //bookList[0].Author = Console.ReadLine();
 
-            BuildBookPropertyFile(bookList);
+            //BuildBookPropertyFile(bookList);
 
         }
 
@@ -63,6 +57,49 @@ namespace Hello
                 bookPropList.Add(sb.ToString());
             }
             System.IO.File.WriteAllLines(@"../../../books.txt", bookPropList);
+        }
+
+        public static void CheckOutBook(List<Book> bookList)
+        {
+            Console.WriteLine("hehe");
+        }
+
+        public static void WelcomeMenu(List<Book> bookList)
+        {
+            // prompt user to select all books or search by value
+            // if the user wants to search, give them a list of searchable properties
+            //     validate user input (enum?) so that we retrieve appropriate information
+            //     this can be broken into two steps, the search and the display
+            //     feed the results of the search into the output of the display
+            Console.WriteLine("Welcome to the library");
+            Console.WriteLine("Would you like to search by author, title, book status, or would you like to see the entire library list?");
+
+            var userInput = Console.ReadLine();
+
+            Console.WriteLine("Here are our books haha");
+            foreach (var book in bookList)
+            {
+                Console.WriteLine($"Title    Author    Status");
+                Console.WriteLine($"{book.Name}    {book.Author}    {book.Status}");
+            }
+
+            bool inputValidation = true;
+
+            while (inputValidation == false)
+            {
+                if (bookList.Author == )
+            }
+        }
+        public static bool Validation(List<>)
+        {
+            bool inputValidation = true;
+
+            while (inputValidation == false)
+            {
+                if(bookList)
+            }
+
+            return inputValidation;
         }
     }
 }
