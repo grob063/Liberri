@@ -32,6 +32,12 @@ namespace Hello
             return this;
         }
 
+        public BookBuilder AddOwner(string owner)
+        {
+            _book.Owner = owner;
+            return this;
+        }
+
         public Book Build()
         {
             return _book;
