@@ -13,5 +13,7 @@ namespace Hello
         public string Status { get; set; }
 
         public string Date { get; set; }
+
+        public string Owner { get; set; }
     }
 }
