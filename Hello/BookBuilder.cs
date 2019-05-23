@@ -16,7 +16,7 @@ namespace Hello
 
         public BookBuilder AddTitle(string title)
         {
-            _book.Name = title;
+            _book.Title = title;
             return this;
         }
 
