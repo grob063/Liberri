@@ -35,13 +35,25 @@ namespace Hello
         {
             if (Status == "in")
             {
-                Console.WriteLine("This book is alredy checked out!");
+                Console.WriteLine("This book is alredy checked in");
             }
             else
             {
-                Status = "out";
-                Date = DateTime.Now.AddDays(14).ToString("MM/dd/yyyy");
-                Console.WriteLine($"{Title} is now checked out. It is due on {Date}");
+                Status = "in";
+                switch (DateTime.Compare(DateTime.Now, DateTime.Parse(Date)))
+                {
+                    case -1:
+                    case 0:
+                        Console.WriteLine("Checked in on time");
+                        break;
+                    case 1:
+                        Console.WriteLine("Checked in late!");
+                        break;
+                    default:
+                        break;
+                }
+                Date = null;
+                Console.WriteLine($"{Title} has been checked in.");
             }
         }
     }

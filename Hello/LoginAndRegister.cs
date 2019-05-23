@@ -14,7 +14,7 @@ namespace Hello
 
         }
 
-        public static User LogIn(List<string> userList)
+        public static User LogIn(List<string> userList, List<Book> bookList)
         {
             string userName = null;
             while (true)
@@ -23,8 +23,9 @@ namespace Hello
                 userName = Console.ReadLine();
                 if (userList.Contains(userName))
                 {
-                    Console.WriteLine($"Welcome back, {userName}");
-                    return new User(userName);
+                    var user = new User(userName);
+                    Console.WriteLine($"Welcome back, {user.Name}");
+                    return user;
                 }
                 else
                 {
