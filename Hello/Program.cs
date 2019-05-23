@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.IO;
 
 namespace Hello
 {
@@ -15,7 +16,7 @@ namespace Hello
             var bookList = BuildBookInstanceList(parsedBookData);
             var userArray = GetUserArray();
             var userName = LogIn(userArray);
-            //Console.WriteLine(userName);
+            //Console.WriteLine(userName.Name);
 
             /*
             var checker = true;
@@ -31,24 +32,39 @@ namespace Hello
                 }
             }
             */
-            //BuildBookPropertyFile(bookList);
+            BuildBookPropertyFile(bookList);
+            Console.WriteLine("");
 
-        }
-        public static void WelcomeWagon()
-        {
-
-            var search = JustLooking();
-
-            SearchList JustLooking()
+            string text = File.ReadAllText(@"../../../books.txt");
+            Console.WriteLine("Would you like to search by title(1), author(2), checked out status(3) or would you prefer to see the full list of books(4)?");
+            Console.Write("Please enter your numbered selection: ");
+            var searchInput = int.Parse(Console.ReadLine());
+            
+            if (searchInput == 1)
             {
-                Console.WriteLine("Welcome, would you like to search by title (1), author (2), checked out status (3) or would you prefer to see the list(4)?");
-                var searchInput = int.Parse(Console.ReadLine());
-                //validate this please
-
-                return 0;
-
+                Console.WriteLine();
             }
+            else if (searchInput == 2)
+            {
+                Console.WriteLine("2");
+            }
+            else if (searchInput == 3)
+            {
+                Console.WriteLine("3");
+            }
+            else if (searchInput == 4)
+            {
+               Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("Invalid selection.");
+            }
+
+            
         }
+      
+
         public static List<string[]> GetFileMetadata()
         {
             var parsedBookData = new List<string[]>();
