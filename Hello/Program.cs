@@ -9,11 +9,13 @@ namespace Hello
     {
         static void Main(string[] args)
         {
+
+            
             var parsedBookData = GetFileMetadata();
             var bookList = BuildBookInstanceList(parsedBookData);
             var userArray = GetUserArray();
             var userName = LogIn(userArray);
-            Console.WriteLine(userName);
+            //Console.WriteLine(userName);
 
             /*
             var checker = true;
@@ -29,10 +31,24 @@ namespace Hello
                 }
             }
             */
-            BuildBookPropertyFile(bookList);
+            //BuildBookPropertyFile(bookList);
 
         }
+        public static void WelcomeWagon()
+        {
 
+            var search = JustLooking();
+
+            SearchList JustLooking()
+            {
+                Console.WriteLine("Welcome, would you like to search by title (1), author (2), checked out status (3) or would you prefer to see the list(4)?");
+                var searchInput = int.Parse(Console.ReadLine());
+                //validate this please
+
+                return 0;
+
+            }
+        }
         public static List<string[]> GetFileMetadata()
         {
             var parsedBookData = new List<string[]>();
@@ -71,7 +87,7 @@ namespace Hello
             }
             System.IO.File.WriteAllLines(@"../../../books.txt", bookPropList);
         }
-
+       
         public static Book GetBookToCheckOut(List<Book> bookList)
         {
             int counter = 1;
@@ -96,11 +112,11 @@ namespace Hello
             else
             {
                 book.Status = "out";
-                book.Date = DateTime.Now.AddDays(14).ToString("MM/dd/yyyy");
+                book.Date = DateTime.Now.AddDays(14).ToString("MM/DD/YYYY");
                 Console.WriteLine($"{book.Name} is now checked out. It is due on {book.Date}");
             }
         }
-        /*
+         
         public static string[] GetUserArray()
         {
             return System.IO.File.ReadAllLines(@"../../../users.txt");
@@ -142,6 +158,7 @@ namespace Hello
                     }
                 }
             }
+
         }
 
         public static User RegisterUser()
@@ -160,7 +177,9 @@ namespace Hello
                 }
             }
             return new User(userInput);
+            
         }
-        */
+         
+        
     }
 }
