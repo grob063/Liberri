@@ -38,20 +38,41 @@ namespace Hello
             string continueCheck;
             do
             {
-                var counter = 1;
-                foreach (var book in checkedOutBooks)
+                while (true)
                 {
-                    Console.WriteLine($"{counter} - {book.Title}, due back on {book.Date}");
-                    counter++;
+                    PrintCheckedOutList(checkedOutBooks);
+
+                    Console.WriteLine("What do you want to check in?");
+
+                    int checkedInput;
+                    var userInput = Console.ReadLine();
+
+                    if ((int.TryParse(userInput, out checkedInput)) && (int.Parse(userInput) > 0) && int.Parse(userInput) <= checkedOutBooks.Count)
+                    {
+                        checkedInput = int.Parse(userInput);
+                        checkedOutBooks[checkedInput - 1].CheckInBook();
+                        checkedOutBooks.Remove(checkedOutBooks[checkedInput - 1]);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please choose a book by number from the list.");
+                    }
                 }
-                Console.WriteLine("What do you want to check in?");
 
-
-                var userChoice = int.Parse(Console.ReadLine());
-                checkedOutBooks[userChoice - 1].CheckInBook();
-                Console.Write("\nWould you like to check out again huh? (y/n)? ");
+                Console.Write("\nWould you like to check another book in? (y/n)? ");
                 continueCheck = Console.ReadLine();
             } while (!continueCheck.Equals("n", StringComparison.OrdinalIgnoreCase));
+        }
+
+        public static void PrintCheckedOutList(List<Book> checkedOutBooks)
+        {
+            var counter = 1;
+            foreach (var book in checkedOutBooks)
+            {
+                Console.WriteLine($"{counter} - {book.Title}, due back on {book.Date}");
+                counter++;
+            }
         }
     }
 }
