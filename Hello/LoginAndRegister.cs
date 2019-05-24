@@ -7,22 +7,25 @@ namespace Hello
 {
     class LoginAndRegister
     {
-        public static string[] GetUserArray()
+        public static List<string> GetUserArray()
         {
-            return System.IO.File.ReadAllLines(@"../../../users.txt");
+            var logFile = System.IO.File.ReadAllLines(@"../../../users.txt");
+            return new List<string>(logFile);
+
         }
 
-        public static User LogIn(string[] userArray)
+        public static User LogIn(List<string> userList, List<Book> bookList)
         {
             string userName = null;
             while (true)
             {
                 Console.Write("Please enter your name to login to the library database: ");
                 userName = Console.ReadLine();
-                if (userArray.Contains(userName))
+                if (userList.Contains(userName))
                 {
-                    Console.WriteLine($"Welcome back, {userName}");
-                    return new User(userName);
+                    var user = new User(userName);
+                    Console.WriteLine($"Welcome back, {user.Name}");
+                    return user;
                 }
                 else
                 {
@@ -66,6 +69,15 @@ namespace Hello
                 }
             }
             return new User(userInput);
+        }
+
+        public static List<string> AddUserToList(List<string> userList, string userName)
+        {
+            if (!userList.Contains(userName))
+            {
+                userList.Add(userName);
+            }
+            return userList;
         }
     }
 }
