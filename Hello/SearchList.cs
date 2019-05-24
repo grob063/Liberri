@@ -11,8 +11,11 @@ namespace Hello
         Title = 2,
         Status = 3,
         List = 4,
+        CheckIn = 5,
+        CheckOut = 6
 
     }
     
+
 
 }
