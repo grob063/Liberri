@@ -42,25 +42,21 @@ namespace Hello
         {
             foreach (var book in bookList)
             {
-                foreach (var word in book)
+                if (book.Author.Contains(userInput))
+                {
+                    searchResults.Add(book);
+                }
+                else if (book.Title.Contains(userInput))
+                {
+                    searchResults.Add(book);
+                }
+                else if (book.Status.Contains(userInput))
+                {
+                    searchResults.Add(book);
+                }
+                else
                 {
 
-                    if (book.Author.Contains(userInput))
-                    {
-                        searchResults.Add(book);
-                    }
-                    else if (book.Title.Contains(userInput))
-                    {
-                        searchResults.Add(book);
-                    }
-                    else if (book.Status.Contains(userInput))
-                    {
-                        searchResults.Add(book);
-                    }
-                    else
-                    {
-
-                    }
                 }
             }
 
