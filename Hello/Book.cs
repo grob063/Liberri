@@ -16,9 +16,8 @@ namespace Hello
 
         public string Owner { get; set; }
 
-        public void CheckOutBook()
+        public void CheckOutBook(User user)
         {
-            //validate this later too haha
             if (Status == "out")
             {
                 Console.WriteLine("This book is alredy checked out!");
@@ -27,6 +26,7 @@ namespace Hello
             {
                 Status = "out";
                 Date = DateTime.Now.AddDays(14).ToString("MM/dd/yyyy");
+                Owner = user.Name;
                 Console.WriteLine($"{Title} is now checked out. It is due on {Date}");
             }
         }
@@ -52,7 +52,8 @@ namespace Hello
                     default:
                         break;
                 }
-                Date = null;
+                Date = "";
+                Owner = "";
                 Console.WriteLine($"{Title} has been checked in.");
             }
         }
