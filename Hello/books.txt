@@ -1,0 +1,3 @@
+Harper Lee,To Kill a Mocking Bird,in,,
+Neil Stephenson,Snow Crash,in,,
+William Gibson,Neuromancer,out,06/03/2019,Adam

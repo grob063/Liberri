@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
 
 namespace Hello
 {
@@ -6,7 +9,8 @@ namespace Hello
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("What up yo!");
+            var startProgram = new ExecuteLibraryProgram();
+            startProgram.MakeItHappen();
         }
     }
 }
