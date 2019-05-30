@@ -20,6 +20,39 @@ namespace Hello
             return checkedOutBookList;
         }
 
+        public static void PrintCheckedOutList(List<Book> checkedOutBooks)
+        {
+            var counter = 1;
+            foreach (var book in checkedOutBooks)
+            {
+                Console.WriteLine($"{counter} - {book.Title}, due back on {book.Date}");
+                counter++;
+            }
+        }
+
+        public static List<Book> GetCheckedinBooks(List<Book> bookList)
+        {
+            var checkedInBookList = new List<Book>();
+            foreach (var book in bookList)
+            {
+                if (book.Status == "in")
+                {
+                    checkedInBookList.Add(book);
+                }
+            }
+            return checkedInBookList;
+        }
+
+        public static void PrintCheckedInList(List<Book> checkedInBooks)
+        {
+            var counter = 1;
+            foreach (var book in checkedInBooks)
+            {
+                Console.WriteLine($"{counter} - {book.Title}, by {book.Author}");
+                counter++;
+            }
+        }
+
         public static void UserStatus(List<Book> checkedOutBooks)
         {
             if (!checkedOutBooks.Any())
@@ -28,28 +61,71 @@ namespace Hello
             }
             else
             {
-                Console.WriteLine("You currently have the following books checked out:");
-                CheckInBook(checkedOutBooks);
+                Console.WriteLine("You currently have the following books checked out:\n");
+                PrintCheckedOutList(checkedOutBooks);
             }
         }
 
-        public static void CheckInBook(List<Book> checkedOutBooks)
+        public static void CheckIn(List<Book> bookList, List<Book> checkedOutBooks)
         {
             string continueCheck;
             do
             {
-                var counter = 1;
-                foreach (var book in checkedOutBooks)
+                while (true)
                 {
-                    Console.WriteLine($"{counter} - {book.Title}, due back on {book.Date}");
-                    counter++;
+                    PrintCheckedOutList(checkedOutBooks);
+
+                    Console.WriteLine("What do you want to check in?");
+
+                    int checkedInput;
+                    var userInput = Console.ReadLine();
+
+                    if ((int.TryParse(userInput, out checkedInput)) && (int.Parse(userInput) > 0) && int.Parse(userInput) <= checkedOutBooks.Count)
+                    {
+                        checkedInput = int.Parse(userInput);
+                        checkedOutBooks[checkedInput - 1].CheckInBook();
+                        checkedOutBooks.Remove(checkedOutBooks[checkedInput - 1]);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please choose a book by number from the list.");
+                    }
                 }
-                Console.WriteLine("What do you want to check in?");
 
+                Console.Write("\nWould you like to check another book in? (y/n)? ");
+                continueCheck = Console.ReadLine();
+            } while (!continueCheck.Equals("n", StringComparison.OrdinalIgnoreCase));
+        }
 
-                var userChoice = int.Parse(Console.ReadLine());
-                checkedOutBooks[userChoice - 1].CheckInBook();
-                Console.Write("\nWould you like to check out again huh? (y/n)? ");
+        public static void CheckOut(List<Book> bookList, List<Book> checkedInBooks, User user)
+        {
+            string continueCheck;
+            do
+            {
+                while (true)
+                {
+                    PrintCheckedInList(checkedInBooks);
+
+                    Console.WriteLine("What do you want to check out?");
+
+                    int checkedInput;
+                    var userInput = Console.ReadLine();
+
+                    if ((int.TryParse(userInput, out checkedInput)) && (int.Parse(userInput) > 0) && int.Parse(userInput) <= checkedInBooks.Count)
+                    {
+                        checkedInput = int.Parse(userInput);
+                        checkedInBooks[checkedInput - 1].CheckOutBook(user);
+                        checkedInBooks.Remove(checkedInBooks[checkedInput - 1]);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please choose a book by number from the list.");
+                    }
+                }
+
+                Console.Write("\nWould you like to check out another book? (y/n)? ");
                 continueCheck = Console.ReadLine();
             } while (!continueCheck.Equals("n", StringComparison.OrdinalIgnoreCase));
         }

@@ -5,6 +5,8 @@ namespace Hello
 {
     class Validation
     {
+        // get rid of this and initialize within class
+        // then return the list once its populated
         public List<Book> searchResults = new List<Book>();
 
         bool inputValidation;
@@ -19,6 +21,7 @@ namespace Hello
 
             switch (searchInput)
             {
+                // have these just cascade into eachother since they all return the same
                 case 1:
                     //Author;
                     inputValidation = true;
@@ -42,6 +45,7 @@ namespace Hello
         {
             foreach (var book in bookList)
             {
+
                 if (book.Author.Contains(userInput))
                 {
                     searchResults.Add(book);
@@ -56,6 +60,8 @@ namespace Hello
                 }
                 else
                 {
+
+                    Console.WriteLine("heheheh");
 
                 }
             }
