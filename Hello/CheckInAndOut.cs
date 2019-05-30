@@ -61,7 +61,7 @@ namespace Hello
             }
             else
             {
-                Console.WriteLine("You currently have the following books checked out:");
+                Console.WriteLine("You currently have the following books checked out:\n");
                 PrintCheckedOutList(checkedOutBooks);
             }
         }

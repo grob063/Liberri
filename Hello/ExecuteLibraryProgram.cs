@@ -18,8 +18,12 @@ namespace Hello
             CheckInAndOut.UserStatus(checkedOutBooks);
             Console.WriteLine("\n");
 
+            var welcome = new Welcome();
+            welcome.WelcomeUser();
+
             //CheckInAndOut.CheckIn(bookList, checkedOutBooks);
-            CheckInAndOut.CheckOut(bookList, checkedInBooks, user);
+            //CheckInAndOut.CheckOut(bookList, checkedInBooks, user);
+
 
             BuildLibraryItems.BuildBookPropertyFile(bookList);
             BuildLibraryItems.BuildUserFile(userList);
