@@ -1,3 +1,12 @@
 Harper Lee,To Kill a Mocking Bird,in,,
 Neil Stephenson,Snow Crash,in,,
 William Gibson,Neuromancer,out,06/03/2019,Adam
+Charles Dickens, A Tale of Two Cities,in,,
+J.R.R. Tolkien, The Lord of the Rings,in,,
+Agatha Christie, And Then There Were None,in,,
+Ray Bradburn,The Illustrated Man,in,,
+E.B. White,Charlotte's Web,in,,
+Robert Asprin,M.Y.T.H Inc,in,,
+George R.R. Martin, A Game of Thrones,in,,
+Neil Gaiman,American Gods,in,,
+Sally M. Keehn,I am Regina,in,,
