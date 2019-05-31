@@ -10,7 +10,10 @@ namespace Hello
     {
         static void Main(string[] args)
         {
-
+            // add titles to pages
+            // console clear to make things pretty
+            // add fun colorz
+            // general formatting of return strings
             var startProgram = new ExecuteLibraryProgram();
             startProgram.MakeItHappen();
         }

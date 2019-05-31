@@ -73,24 +73,36 @@ namespace Hello
             {
                 while (true)
                 {
-                    PrintCheckedOutList(checkedOutBooks);
-
-                    Console.WriteLine("What do you want to check in?");
-
-                    int checkedInput;
-                    var userInput = Console.ReadLine();
-
-                    if ((int.TryParse(userInput, out checkedInput)) && (int.Parse(userInput) > 0) && int.Parse(userInput) <= checkedOutBooks.Count)
+                    if (!(checkedOutBooks.Count == 0))
                     {
-                        checkedInput = int.Parse(userInput);
-                        checkedOutBooks[checkedInput - 1].CheckInBook();
-                        checkedInBooks.Add(checkedOutBooks[checkedInput - 1]);
-                        checkedOutBooks.Remove(checkedOutBooks[checkedInput - 1]);
-                        break;
+
+                        PrintCheckedOutList(checkedOutBooks);
+
+                        Console.WriteLine("What do you want to check in?");
+
+                        int checkedInput;
+                        var userInput = Console.ReadLine();
+
+                        if ((int.TryParse(userInput, out checkedInput)) && (int.Parse(userInput) > 0) && int.Parse(userInput) <= checkedOutBooks.Count)
+                        {
+                            checkedInput = int.Parse(userInput);
+                            checkedOutBooks[checkedInput - 1].CheckInBook();
+                            checkedInBooks.Add(checkedOutBooks[checkedInput - 1]);
+                            checkedOutBooks.Remove(checkedOutBooks[checkedInput - 1]);
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Please choose a book by number from the list.");
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("Please choose a book by number from the list.");
+                        Console.WriteLine("You don't have anything to check in.");
+                        Console.WriteLine("Press any key to return to main menu.");
+                        Console.ReadKey();
+                        return;
+
                     }
                 }
 
@@ -125,7 +137,6 @@ namespace Hello
                         Console.WriteLine("Please choose a book by number from the list.");
                     }
                 }
-
                 Console.Write("\nWould you like to check out another book? (y/n)? ");
                 continueCheck = Console.ReadLine();
             } while (!continueCheck.Equals("n", StringComparison.OrdinalIgnoreCase));

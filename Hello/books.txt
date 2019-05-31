@@ -8,5 +8,5 @@ Ray Bradburn,The Illustrated Man,in,,
 E.B. White,Charlotte's Web,in,,
 Robert Asprin,M.Y.T.H Inc,in,,
 George R.R. Martin,A Game of Thrones,in,,
-Neil Gaiman,American Gods,in,,
+Neil Gaiman,American Gods,out,06/13/2019,Hermann
 Sally M. Keehn,I am Regina,in,,
