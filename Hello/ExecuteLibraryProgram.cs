@@ -20,7 +20,6 @@ namespace Hello
 
             while (true)
             {
-                // wrap this entire thing in a while
                 var userSelection = Welcome.WelcomeUser();
                 if (userSelection == 1)
                 {
@@ -48,8 +47,8 @@ namespace Hello
                     break;
                 }
 
-                //BuildLibraryItems.BuildBookPropertyFile(bookList);
-                //BuildLibraryItems.BuildUserFile(userList);
+                BuildLibraryItems.BuildBookPropertyFile(bookList);
+                BuildLibraryItems.BuildUserFile(userList);
             }
         }
     }
