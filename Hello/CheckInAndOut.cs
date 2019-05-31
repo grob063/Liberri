@@ -66,7 +66,7 @@ namespace Hello
             }
         }
 
-        public static void CheckIn(List<Book> bookList, List<Book> checkedOutBooks)
+        public static void CheckIn(List<Book> bookList, List<Book> checkedOutBooks, List<Book> checkedInBooks)
         {
             string continueCheck;
             do
@@ -84,6 +84,7 @@ namespace Hello
                     {
                         checkedInput = int.Parse(userInput);
                         checkedOutBooks[checkedInput - 1].CheckInBook();
+                        checkedInBooks.Add(checkedOutBooks[checkedInput - 1]);
                         checkedOutBooks.Remove(checkedOutBooks[checkedInput - 1]);
                         break;
                     }
