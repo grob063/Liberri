@@ -18,15 +18,39 @@ namespace Hello
             CheckInAndOut.UserStatus(checkedOutBooks);
             Console.WriteLine("\n");
 
-            var welcome = new Welcome();
-            welcome.WelcomeUser();
+            while (true)
+            {
+                // wrap this entire thing in a while
+                var userSelection = Welcome.WelcomeUser();
+                if (userSelection == 1)
+                {
+                    GetSearchResults.AuthorSearch(bookList);
+                }
+                else if (userSelection == 2)
+                {
+                    GetSearchResults.TitleSearch(bookList);
+                }
+                else if (userSelection == 3)
+                {
+                    GetSearchResults.FullStatusDisplay(bookList);
+                }
+                else if (userSelection == 4)
+                {
+                    CheckInAndOut.CheckIn(bookList, checkedOutBooks, checkedInBooks);
+                }
+                else if (userSelection == 5)
+                {
+                    CheckInAndOut.CheckOut(bookList, checkedInBooks, user);
+                }
+                else if (userSelection == 6)
+                {
+                    Console.WriteLine($"See ya later, {user.Name}");
+                    break;
+                }
 
-            //CheckInAndOut.CheckIn(bookList, checkedOutBooks);
-            //CheckInAndOut.CheckOut(bookList, checkedInBooks, user);
-
-
-            BuildLibraryItems.BuildBookPropertyFile(bookList);
-            BuildLibraryItems.BuildUserFile(userList);
+                //BuildLibraryItems.BuildBookPropertyFile(bookList);
+                //BuildLibraryItems.BuildUserFile(userList);
+            }
         }
     }
 }
