@@ -55,6 +55,7 @@ namespace Hello
 
         public static void UserStatus(List<Book> checkedOutBooks)
         {
+            Welcome.ResetPage();
             if (!checkedOutBooks.Any())
             {
                 Console.WriteLine("You don't currently have anything checked out.");
@@ -64,6 +65,8 @@ namespace Hello
                 Console.WriteLine("You currently have the following books checked out:\n");
                 PrintCheckedOutList(checkedOutBooks);
             }
+            Console.WriteLine("\nPress any key to view the library catalog");
+            Console.ReadKey();
         }
 
         public static void CheckIn(List<Book> bookList, List<Book> checkedOutBooks, List<Book> checkedInBooks)
@@ -111,7 +114,7 @@ namespace Hello
             } while (!continueCheck.Equals("n", StringComparison.OrdinalIgnoreCase));
         }
 
-        public static void CheckOut(List<Book> bookList, List<Book> checkedInBooks, User user)
+        public static void CheckOut(List<Book> bookList, List<Book> checkedInBooks, List<Book> checkedOutBooks, User user)
         {
             string continueCheck;
             do
@@ -129,6 +132,7 @@ namespace Hello
                     {
                         checkedInput = int.Parse(userInput);
                         checkedInBooks[checkedInput - 1].CheckOutBook(user);
+                        checkedOutBooks.Add(checkedInBooks[checkedInput - 1]);
                         checkedInBooks.Remove(checkedInBooks[checkedInput - 1]);
                         break;
                     }

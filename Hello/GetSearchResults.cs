@@ -11,6 +11,8 @@ namespace Hello
             string continueCheck;
             do
             {
+                Welcome.ResetPage();
+                Console.WriteLine("Now searching catalog by author");
                 WriteCyanToConsole("Please enter a search facet: ");
                 var userInput = Console.ReadLine().ToLower();
                 var counter = 1;
@@ -28,6 +30,11 @@ namespace Hello
                     {
                         Console.WriteLine($"{counter} - {book.Title} - {book.Author}");
                         counter++;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Could not find matching search result");
+                        break;
                     }
                 }
                 Console.WriteLine("Would you like to search again (y/n)? ");
