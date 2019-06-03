@@ -65,7 +65,7 @@ namespace Hello
                 Console.WriteLine("You currently have the following books checked out:\n");
                 PrintCheckedOutList(checkedOutBooks);
             }
-            Console.WriteLine("\nPress any key to view the library catalog");
+            GetSearchResults.WriteCyanToConsole("\nPress any key to view the library catalog");
             Console.ReadKey();
         }
 
@@ -81,7 +81,7 @@ namespace Hello
                         Welcome.ResetPage();
                         Console.WriteLine("Now checking in a book\n");
                         PrintCheckedOutList(checkedOutBooks);
-                        Console.Write("\nPlease choose a book to check in: ");
+                        GetSearchResults.WriteCyanToConsole("\nPlease choose a book to check in: ");
 
                         int checkedInput;
                         var userInput = Console.ReadLine();
@@ -99,7 +99,7 @@ namespace Hello
                         {
                             Welcome.ResetPage();
                             Console.WriteLine("Please choose a book by number from the list.");
-                            Console.WriteLine("Press any key to continue");
+                            GetSearchResults.WriteCyanToConsole("\nPress any key to continue");
                             Console.ReadKey();
                         }
                     }
@@ -107,14 +107,14 @@ namespace Hello
                     {
                         Welcome.ResetPage();
                         Console.WriteLine("You don't have anything to check in.");
-                        Console.WriteLine("Press any key to return to main menu.");
+                        GetSearchResults.WriteCyanToConsole("\nPress any key to return to main menu.");
                         Console.ReadKey();
                         return;
 
                     }
                 }
 
-                Console.Write("\nWould you like to check another book in? (y/n)? ");
+                GetSearchResults.WriteCyanToConsole("\nWould you like to check another book in? (y/n)? ");
                 continueCheck = Console.ReadLine();
             } while (!continueCheck.Equals("n", StringComparison.OrdinalIgnoreCase));
         }
@@ -126,32 +126,43 @@ namespace Hello
             {
                 while (true)
                 {
-                    Welcome.ResetPage();
-                    Console.WriteLine("Now checking out a book\n");
-                    PrintCheckedInList(checkedInBooks);
-                    Console.Write("\nPlease choose a book to check out: ");
-
-                    int checkedInput;
-                    var userInput = Console.ReadLine();
-
-                    if ((int.TryParse(userInput, out checkedInput)) && (int.Parse(userInput) > 0) && int.Parse(userInput) <= checkedInBooks.Count)
+                    if (!(checkedInBooks.Count == 0))
                     {
                         Welcome.ResetPage();
-                        checkedInput = int.Parse(userInput);
-                        checkedInBooks[checkedInput - 1].CheckOutBook(user);
-                        checkedOutBooks.Add(checkedInBooks[checkedInput - 1]);
-                        checkedInBooks.Remove(checkedInBooks[checkedInput - 1]);
-                        break;
+                        Console.WriteLine("Now checking out a book\n");
+                        PrintCheckedInList(checkedInBooks);
+                        GetSearchResults.WriteCyanToConsole("\nPlease choose a book to check out: ");
+
+                        int checkedInput;
+                        var userInput = Console.ReadLine();
+
+                        if ((int.TryParse(userInput, out checkedInput)) && (int.Parse(userInput) > 0) && int.Parse(userInput) <= checkedInBooks.Count)
+                        {
+                            Welcome.ResetPage();
+                            checkedInput = int.Parse(userInput);
+                            checkedInBooks[checkedInput - 1].CheckOutBook(user);
+                            checkedOutBooks.Add(checkedInBooks[checkedInput - 1]);
+                            checkedInBooks.Remove(checkedInBooks[checkedInput - 1]);
+                            break;
+                        }
+                        else
+                        {
+                            Welcome.ResetPage();
+                            Console.WriteLine("Please choose a book by number from the list.");
+                            GetSearchResults.WriteCyanToConsole("\nPress any key to continue");
+                            Console.ReadKey();
+                        }
                     }
                     else
                     {
                         Welcome.ResetPage();
-                        Console.WriteLine("Please choose a book by number from the list.");
-                        Console.WriteLine("Press any key to continue");
+                        Console.WriteLine("There aren't currently any available books to check out!");
+                        GetSearchResults.WriteCyanToConsole("\nPress any key to return to main menu.");
                         Console.ReadKey();
+                        return;
                     }
                 }
-                Console.Write("\nWould you like to check out another book? (y/n)? ");
+                GetSearchResults.WriteCyanToConsole("\nWould you like to check out another book? (y/n)? ");
                 continueCheck = Console.ReadLine();
             } while (!continueCheck.Equals("n", StringComparison.OrdinalIgnoreCase));
         }

@@ -13,7 +13,7 @@ namespace Hello
             {
                 Welcome.ResetPage();
                 Console.WriteLine("Now searching catalog by author");
-                WriteCyanToConsole("Please enter a search facet: ");
+                WriteCyanToConsole("\nPlease enter a search facet: ");
                 var userInput = Console.ReadLine().ToLower();
                 var counter = 1;
                 var foundBooks = new List<Book>();
@@ -52,7 +52,7 @@ namespace Hello
                 {
                     Console.WriteLine("\nCould not find any title matching that search");
                 }
-                Console.WriteLine("\nWould you like to search again (y/n)? ");
+                WriteCyanToConsole("\nWould you like to search again (y/n)? ");
                 continueCheck = Console.ReadLine();
             } while (!continueCheck.Equals("n", StringComparison.OrdinalIgnoreCase));
         }
@@ -64,7 +64,7 @@ namespace Hello
             {
                 Welcome.ResetPage();
                 Console.WriteLine("Now searching catalog by title");
-                WriteCyanToConsole("Please enter a search facet: ");
+                WriteCyanToConsole("\nPlease enter a search facet: ");
                 var userInput = Console.ReadLine().ToLower();
                 var counter = 1;
                 var foundBooks = new List<Book>();
@@ -103,7 +103,7 @@ namespace Hello
                 {
                     Console.WriteLine("\nCould not find any title matching that search");
                 }
-                Console.WriteLine("\nWould you like to search again (y/n)? ");
+                WriteCyanToConsole("\nWould you like to search again (y/n)? ");
                 continueCheck = Console.ReadLine();
             } while (!continueCheck.Equals("n", StringComparison.OrdinalIgnoreCase));
         }
@@ -128,7 +128,7 @@ namespace Hello
                         counter++;
                     }
                 }
-                Console.WriteLine("\nPress any key to continue");
+                WriteCyanToConsole("\nPress any key to continue");
                 Console.ReadLine();
                 break;
             }

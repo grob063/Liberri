@@ -44,7 +44,7 @@ namespace Hello
                         break;
                     case 7:
                         Welcome.ResetPage();
-                        Console.WriteLine($"See ya later, {user.Name}");
+                        Console.WriteLine($"Please come back soon, {user.Name}!");
                         BuildLibraryItems.BuildBookPropertyFile(bookList);
                         BuildLibraryItems.BuildUserFile(userList);
                         return;

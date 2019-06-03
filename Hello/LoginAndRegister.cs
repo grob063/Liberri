@@ -20,7 +20,7 @@ namespace Hello
             while (true)
             {
                 Welcome.ResetPage();
-                Console.Write("Please enter your name to login to the library database: ");
+                GetSearchResults.WriteCyanToConsole("Please enter your name to login to the library database: ");
                 userName = Console.ReadLine();
                 if (userList.Contains(userName))
                 {
@@ -31,12 +31,12 @@ namespace Hello
                 else
                 {
                     Welcome.ResetPage();
-                    Console.WriteLine("Cannot find user name.");
+                    Console.WriteLine("Cannot find user name.\n");
                     while (true)
                     {
                         Console.WriteLine("1 - Retry login");
                         Console.WriteLine("2 - Register new user");
-                        Console.Write("Please select the one of the following options: ");
+                        GetSearchResults.WriteCyanToConsole("\nPlease select the one of the following options: ");
                         string userSelection = Console.ReadLine();
                         if (userSelection == "1")
                         {
@@ -64,7 +64,7 @@ namespace Hello
                 while (true)
                 {
                     Welcome.ResetPage();
-                    Console.Write("Please enter a user name to register: ");
+                    GetSearchResults.WriteCyanToConsole("Please enter a user name to register: ");
                     userInput = Console.ReadLine();
                     if (!(userList.Contains(userInput)))
                     {
@@ -73,17 +73,17 @@ namespace Hello
                     else
                     {
                         Console.WriteLine("That name has already been registered");
-                        Console.WriteLine("Press any key to continue...");
+                        GetSearchResults.WriteCyanToConsole("Press any key to continue...");
                         Console.ReadKey();
                     }
                 }
-                Console.Write($"You've entered {userInput}. Is this the name you want (y/n)? ");
+                GetSearchResults.WriteCyanToConsole($"\nYou've entered {userInput}. Is this the name you want (y/n)? ");
                 string continueCheck = Console.ReadLine();
                 if (!continueCheck.Equals("n", StringComparison.OrdinalIgnoreCase))
                 {
                     Welcome.ResetPage();
                     Console.WriteLine($"Thank you for registering, {userInput}");
-                    Console.WriteLine("Press any key to access the library catalog");
+                    GetSearchResults.WriteCyanToConsole("\nPress any key to access the library catalog");
                     Console.ReadKey();
                     break;
                 }
