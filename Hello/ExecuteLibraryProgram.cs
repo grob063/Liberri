@@ -8,6 +8,7 @@ namespace Hello
     {
         public void MakeItHappen()
         {
+            Welcome.IntroPage();
             var parsedBookData = BuildLibraryItems.GetFileMetadata();
             var bookList = BuildLibraryItems.BuildBookInstanceList(parsedBookData);
             var userList = LoginAndRegister.GetUserArray();
@@ -17,38 +18,39 @@ namespace Hello
             var checkedInBooks = CheckInAndOut.GetCheckedinBooks(bookList);
             CheckInAndOut.UserStatus(checkedOutBooks);
             Console.WriteLine("\n");
-
+            
             while (true)
             {
                 var userSelection = Welcome.WelcomeUser();
-                if (userSelection == 1)
+                switch (userSelection)
                 {
-                    GetSearchResults.AuthorSearch(bookList);
+                    case 1:
+                        GetSearchResults.AuthorSearch(bookList);
+                        break;
+                    case 2:
+                        GetSearchResults.TitleSearch(bookList);
+                        break;
+                    case 3:
+                        GetSearchResults.FullStatusDisplay(bookList);
+                        break;
+                    case 4:
+                        CheckInAndOut.CheckIn(bookList, checkedOutBooks, checkedInBooks);
+                        break;
+                    case 5:
+                        CheckInAndOut.CheckOut(bookList, checkedInBooks, checkedOutBooks, user);
+                        break;
+                    case 6:
+                        BuildLibraryItems.AddBook(bookList, checkedInBooks);
+                        break;
+                    case 7:
+                        Welcome.ResetPage();
+                        Console.WriteLine($"See ya later, {user.Name}");
+                        BuildLibraryItems.BuildBookPropertyFile(bookList);
+                        BuildLibraryItems.BuildUserFile(userList);
+                        return;
+                    default:
+                        break;
                 }
-                else if (userSelection == 2)
-                {
-                    GetSearchResults.TitleSearch(bookList);
-                }
-                else if (userSelection == 3)
-                {
-                    GetSearchResults.FullStatusDisplay(bookList);
-                }
-                else if (userSelection == 4)
-                {
-                    CheckInAndOut.CheckIn(bookList, checkedOutBooks, checkedInBooks);
-                }
-                else if (userSelection == 5)
-                {
-                    CheckInAndOut.CheckOut(bookList, checkedInBooks, user);
-                }
-                else if (userSelection == 6)
-                {
-                    Console.WriteLine($"See ya later, {user.Name}");
-                    break;
-                }
-
-                BuildLibraryItems.BuildBookPropertyFile(bookList);
-                BuildLibraryItems.BuildUserFile(userList);
             }
         }
     }
