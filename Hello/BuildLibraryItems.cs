@@ -54,15 +54,15 @@ namespace Hello
         {
             Welcome.ResetPage();
             var donatedBook = new Book();
-            Console.Write("Please enter the name of the book you're donating: ");
+            GetSearchResults.WriteCyanToConsole("Please enter the name of the book you're donating: ");
             donatedBook.Title = Console.ReadLine();
-            Console.Write("Please enter the author of the book you're donating: ");
+            GetSearchResults.WriteCyanToConsole("Please enter the author of the book you're donating: ");
             donatedBook.Author = Console.ReadLine();
             donatedBook.Status = "in";
             bookList.Add(donatedBook);
             checkedInBooks.Add(donatedBook);
-            Console.WriteLine("Thank you for your donation!");
-            Console.WriteLine("Press any key to continue");
+            Console.WriteLine("\nThank you for your donation!");
+            GetSearchResults.WriteCyanToConsole("\nPress any key to continue");
             Console.ReadKey();
         }
     }
