@@ -40,6 +40,10 @@ namespace Hello
                         CheckInAndOut.CheckOut(bookList, checkedInBooks, checkedOutBooks, user);
                         break;
                     case 6:
+                        BuildLibraryItems.AddBook(bookList, checkedInBooks);
+                        break;
+                    case 7:
+                        Welcome.ResetPage();
                         Console.WriteLine($"See ya later, {user.Name}");
                         BuildLibraryItems.BuildBookPropertyFile(bookList);
                         BuildLibraryItems.BuildUserFile(userList);

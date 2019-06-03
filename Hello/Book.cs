@@ -44,17 +44,16 @@ namespace Hello
                 {
                     case -1:
                     case 0:
-                        Console.WriteLine("Checked in on time");
+                        Console.WriteLine($"{Title} checked in on time");
                         break;
                     case 1:
-                        Console.WriteLine("Checked in late!");
+                        Console.WriteLine($"{Title} checked in late!");
                         break;
                     default:
                         break;
                 }
                 Date = "";
                 Owner = "";
-                Console.WriteLine($"{Title} has been checked in.");
             }
         }
     }

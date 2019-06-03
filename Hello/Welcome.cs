@@ -32,7 +32,8 @@ namespace Hello
             while (true)
             {
                 ResetPage();
-                Console.WriteLine("What would you like to do? \n (1) Search by author \n (2) Search by title\n (3) Display all book information \n (4) Return a book \n (5) Check out a book \n (6) Exit Program");
+                Console.WriteLine("Welcome to the Library's main page\n (1) Search by author\n (2) Search by title\n (3) Display all book information\n (4) Return a book\n (5) Check out a book\n (6) Donate book to library\n (7) Exit Program");
+                Console.Write("\nPlease select an option from the list above: ");
                 var searchInput = Console.ReadLine();
                 if ((int.TryParse(searchInput, out checkSearchInput)) && (int.Parse(searchInput) > 0) && (int.Parse(searchInput) <= 7))
                 {
@@ -41,7 +42,9 @@ namespace Hello
                 }
                 else
                 {
-                    Console.WriteLine("Please choose from the list.");
+                    Console.WriteLine("Please choose a valid entry from the list.");
+                    Console.WriteLine("Press any key to continue");
+                    Console.ReadKey();
                 }
             }
             return checkSearchInput;

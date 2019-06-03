@@ -1,7 +1,7 @@
 Harper Lee,To Kill a Mocking Bird,out,06/13/2019,Adam
 Neil Stephenson,Snow Crash,out,06/15/2019,Adam
 William Gibson,Neuromancer,out,06/03/2019,Adam
-Charles Dickens,A Tale of Two Cities,out,06/15/2019,Adam
+Charles Dickens,A Tale of Two Cities,in,,
 J.R.R. Tolkien,The Lord of the Rings,in,,
 Agatha Christie,And Then There Were None,in,,
 Ray Bradburn,The Illustrated Man,in,,
@@ -10,3 +10,4 @@ Robert Asprin,M.Y.T.H Inc,in,,
 George R.R. Martin,A Game of Thrones,in,,
 Neil Gaiman,American Gods,out,06/13/2019,Hermann
 Sally M. Keehn,I am Regina,in,,
+Cormac McCarthy,Blood Meridian,in,,

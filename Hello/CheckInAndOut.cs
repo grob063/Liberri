@@ -78,16 +78,17 @@ namespace Hello
                 {
                     if (!(checkedOutBooks.Count == 0))
                     {
-
+                        Welcome.ResetPage();
+                        Console.WriteLine("Now checking in a book\n");
                         PrintCheckedOutList(checkedOutBooks);
-
-                        Console.WriteLine("What do you want to check in?");
+                        Console.Write("\nPlease choose a book to check in: ");
 
                         int checkedInput;
                         var userInput = Console.ReadLine();
 
                         if ((int.TryParse(userInput, out checkedInput)) && (int.Parse(userInput) > 0) && int.Parse(userInput) <= checkedOutBooks.Count)
                         {
+                            Welcome.ResetPage();
                             checkedInput = int.Parse(userInput);
                             checkedOutBooks[checkedInput - 1].CheckInBook();
                             checkedInBooks.Add(checkedOutBooks[checkedInput - 1]);
@@ -96,11 +97,15 @@ namespace Hello
                         }
                         else
                         {
+                            Welcome.ResetPage();
                             Console.WriteLine("Please choose a book by number from the list.");
+                            Console.WriteLine("Press any key to continue");
+                            Console.ReadKey();
                         }
                     }
                     else
                     {
+                        Welcome.ResetPage();
                         Console.WriteLine("You don't have anything to check in.");
                         Console.WriteLine("Press any key to return to main menu.");
                         Console.ReadKey();
@@ -121,15 +126,17 @@ namespace Hello
             {
                 while (true)
                 {
+                    Welcome.ResetPage();
+                    Console.WriteLine("Now checking out a book\n");
                     PrintCheckedInList(checkedInBooks);
-
-                    Console.WriteLine("What do you want to check out?");
+                    Console.Write("\nPlease choose a book to check out: ");
 
                     int checkedInput;
                     var userInput = Console.ReadLine();
 
                     if ((int.TryParse(userInput, out checkedInput)) && (int.Parse(userInput) > 0) && int.Parse(userInput) <= checkedInBooks.Count)
                     {
+                        Welcome.ResetPage();
                         checkedInput = int.Parse(userInput);
                         checkedInBooks[checkedInput - 1].CheckOutBook(user);
                         checkedOutBooks.Add(checkedInBooks[checkedInput - 1]);
@@ -138,7 +145,10 @@ namespace Hello
                     }
                     else
                     {
+                        Welcome.ResetPage();
                         Console.WriteLine("Please choose a book by number from the list.");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                     }
                 }
                 Console.Write("\nWould you like to check out another book? (y/n)? ");
